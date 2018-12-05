@@ -56,6 +56,10 @@ MySqlConnection::MySqlConnection(std::string username, std::string password,
         std::string server, int port) {
     this->username = username;
     this->password = password;
+    /*
+     *this->username = "localhost";
+     *this->password = "socialsim";
+     */
     this->server = server;
     this->port = port;
     this->startTime = startTime;
@@ -83,7 +87,7 @@ bool MySqlConnection::connect() {
     std::string serveradress = getServer() + serverAddressPort;
     con = driver->connect(serveradress, getUsername(), getPassword());
     stmt = con->createStatement();
-    stmt->execute("USE student;");
+    stmt->execute("USE ACDCTestData;");
     delete stmt;
     if (con->isValid())
         return true;

@@ -1,0 +1,120 @@
+file 167199 1543988871                                          
+version 2
+run Run6-0-20181204-23:47:51-45817
+attr configname Run6
+attr datetime 20181204-23:47:51
+attr experiment Run6
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network testbed.src.simulation.Internet
+attr processid 45817
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param Internet.SetupfileName "\"Topology 1 7 LCD   ARC2   8192\""
+
+vector 0 Internet.originServ Serves ETV
+vector 1 Internet.Proxy1 hitsTotal ETV
+vector 2 Internet.Proxy1 missesTotal ETV
+vector 3 Internet.Proxy1 Hitrate ETV
+vector 4 Internet.Proxy1 AverageDelay ETV
+vector 5 Internet.Proxy1 TimeToFirstSegment ETV
+vector 6 Internet.Proxy1 ReadOperations ETV
+vector 7 Internet.Proxy1 WriteOperations ETV
+vector 8 Internet.Proxy2 hitsTotal ETV
+vector 9 Internet.Proxy2 missesTotal ETV
+vector 10 Internet.Proxy2 Hitrate ETV
+vector 11 Internet.Proxy2 AverageDelay ETV
+vector 12 Internet.Proxy2 TimeToFirstSegment ETV
+vector 13 Internet.Proxy2 ReadOperations ETV
+vector 14 Internet.Proxy2 WriteOperations ETV
+vector 15 Internet.Proxy3 hitsTotal ETV
+vector 16 Internet.Proxy3 missesTotal ETV
+vector 17 Internet.Proxy3 Hitrate ETV
+vector 18 Internet.Proxy3 AverageDelay ETV
+vector 19 Internet.Proxy3 TimeToFirstSegment ETV
+vector 20 Internet.Proxy3 ReadOperations ETV
+vector 21 Internet.Proxy3 WriteOperations ETV
+vector 22 Internet.Proxy4 hitsTotal ETV
+vector 23 Internet.Proxy4 missesTotal ETV
+vector 24 Internet.Proxy4 Hitrate ETV
+vector 25 Internet.Proxy4 AverageDelay ETV
+vector 26 Internet.Proxy4 TimeToFirstSegment ETV
+vector 27 Internet.Proxy4 ReadOperations ETV
+vector 28 Internet.Proxy4 WriteOperations ETV
+vector 29 Internet.Proxy5 hitsTotal ETV
+vector 30 Internet.Proxy5 missesTotal ETV
+vector 31 Internet.Proxy5 Hitrate ETV
+vector 32 Internet.Proxy5 AverageDelay ETV
+vector 33 Internet.Proxy5 TimeToFirstSegment ETV
+vector 34 Internet.Proxy5 ReadOperations ETV
+vector 35 Internet.Proxy5 WriteOperations ETV
+vector 36 Internet.Proxy6 hitsTotal ETV
+vector 37 Internet.Proxy6 missesTotal ETV
+vector 38 Internet.Proxy6 Hitrate ETV
+vector 39 Internet.Proxy6 AverageDelay ETV
+vector 40 Internet.Proxy6 TimeToFirstSegment ETV
+vector 41 Internet.Proxy6 ReadOperations ETV
+vector 42 Internet.Proxy6 WriteOperations ETV
+vector 43 Internet.Proxy7 hitsTotal ETV
+vector 44 Internet.Proxy7 missesTotal ETV
+vector 45 Internet.Proxy7 Hitrate ETV
+vector 46 Internet.Proxy7 AverageDelay ETV
+vector 47 Internet.Proxy7 TimeToFirstSegment ETV
+vector 48 Internet.Proxy7 ReadOperations ETV
+vector 49 Internet.Proxy7 WriteOperations ETV
+0	2587 2669 1 8031 0 604800 171 0 4 656 2576
+1	5256 2674 3 8025 0 604800 169 0 11 953 6911
+2	7930 2954 3 8025 0 604800 169 0 656 55485 24362943
+3	10884 2697 3 8031 0 604800 170 -nan -nan -nan -nan
+4	13581 5221 3 8025 0 604800 169 0 0.016000000061467 2.6440000015268 0.041776000048421
+5	18802 4589 3 8025 0 604800 169 0 0.016000000061467 2.0133333340943 0.032003555579951
+6	23391 2672 3 8031 0 604800 170 0 10 1356 11008
+7	26063 2685 3 8031 0 604800 170 0 12 1338 10984
+8	28748 2645 4 8026 0 604800 169 0 2 225 421
+9	31393 2926 4 8026 0 604800 169 0 326 27747 6054387
+10	34319 2851 4 8031 0 604800 170 -nan -nan -nan -nan
+11	37170 5322 4 8026 0 604800 169 0 0.032000000006519 4.9386666673113 0.15637333337404
+12	42492 4253 4 8026 0 604800 169 0 0.032000000006519 2.8400000002551 0.090048000016126
+13	46745 2831 4 8031 0 604800 170 0 8 660 3272
+14	49576 2831 4 8031 0 604800 170 0 2 10 14
+15	52407 2815 5 8027 0 604800 169 0 3 121 209
+16	55222 3098 5 8027 0 604800 169 0 341 28691 6547159
+17	58320 2856 5 8031 0 604800 170 -nan -nan -nan -nan
+18	61176 5377 5 8027 0 604800 169 0 0.032000000006519 5.085333333964 0.16125511115146
+19	66553 4209 5 8027 0 604800 169 0 0.032000000006519 2.7813333335625 0.088327111125622
+20	70762 2834 5 8031 0 604800 170 0 10 694 3580
+21	73596 2832 5 8031 0 604800 170 0 2 11 17
+22	76428 2815 6 8028 0 604800 169 0 0 0 0
+23	79243 3024 6 8028 0 604800 169 0 159 12642 1299772
+24	82267 2835 6 8031 0 604800 170 -nan -nan -nan -nan
+25	85102 4623 6 8028 0 604800 169 0 0.048000000009779 5.3759999996601 0.25651199996697
+26	89725 3775 6 8028 0 604800 169 0 0.048000000009779 2.8479999997962 0.13567999998025
+27	93500 2832 6 8031 0 604800 170 0 8 318 1100
+28	96332 2832 6 8031 0 604800 170 0 0 0 0
+29	99164 2815 7 8029 0 604800 169 0 0 0 0
+30	101979 3055 7 8029 0 604800 169 0 169 15330 1800170
+31	105034 2835 7 8031 0 604800 170 -nan -nan -nan -nan
+32	107869 4654 7 8029 0 604800 169 0 0.048000000009779 5.4373333332445 0.25873777776919
+33	112523 3709 7 8029 0 604800 169 0 0.048000000009779 2.608000000205 0.12364800001926
+34	116232 2832 7 8031 0 604800 170 0 8 338 1204
+35	119064 2832 7 8031 0 604800 170 0 1 2 2
+36	121896 2815 8 8030 0 604800 169 0 0 0 0
+37	124711 3036 8 8030 0 604800 169 0 174 14657 1703847
+38	127747 2835 8 8031 0 604800 170 -nan -nan -nan -nan
+39	130582 4639 8 8030 0 604800 169 0 0.048000000009779 5.4453333331433 0.26033777776059
+40	135221 3647 8 8030 0 604800 169 0 0.048000000009779 2.488000000043 0.11910400000423
+41	138868 2832 8 8031 0 604800 170 0 8 348 1288
+42	141700 2832 8 8031 0 604800 170 0 1 1 1
+43	144532 2815 9 8031 0 604800 169 0 0 0 0
+44	147347 3042 9 8031 0 604800 169 0 170 14155 1605505
+45	150389 2835 9 8031 0 604800 170 -nan -nan -nan -nan
+46	153224 4659 9 8031 0 604800 169 0 0.048000000009779 5.4959999997848 0.26183822220495
+47	157883 3651 9 8031 0 604800 169 0 0.048000000009779 2.5120000001955 0.11955200001835
+48	161534 2832 9 8031 0 604800 170 0 8 340 1184
+49	164366 2832 9 8031 0 604800 170 0 1 2 2
+

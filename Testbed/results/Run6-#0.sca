@@ -1,0 +1,48 @@
+version 2
+run Run6-0-20181204-23:47:51-45817
+attr configname Run6
+attr datetime 20181204-23:47:51
+attr experiment Run6
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network testbed.src.simulation.Internet
+attr processid 45817
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param Internet.SetupfileName "\"Topology 1 7 LCD   ARC2   8192\""
+
+scalar Internet.originServ "Total serves" 656
+scalar Internet.Proxy1 Requests 667
+scalar Internet.Proxy1 "Hit Rate" 0.016491754122939
+scalar Internet.Proxy1 "Write Operations" 0
+scalar Internet.Proxy1 "Read OPerations" 0
+scalar Internet.Proxy2 Requests 328
+scalar Internet.Proxy2 "Hit Rate" 0.0060975609756098
+scalar Internet.Proxy2 "Write Operations" 0
+scalar Internet.Proxy2 "Read OPerations" 0
+scalar Internet.Proxy3 Requests 344
+scalar Internet.Proxy3 "Hit Rate" 0.0087209302325581
+scalar Internet.Proxy3 "Write Operations" 0
+scalar Internet.Proxy3 "Read OPerations" 0
+scalar Internet.Proxy4 Requests 159
+scalar Internet.Proxy4 "Hit Rate" 0
+scalar Internet.Proxy4 "Write Operations" 0
+scalar Internet.Proxy4 "Read OPerations" 0
+scalar Internet.Proxy5 Requests 169
+scalar Internet.Proxy5 "Hit Rate" 0
+scalar Internet.Proxy5 "Write Operations" 0
+scalar Internet.Proxy5 "Read OPerations" 0
+scalar Internet.Proxy6 Requests 174
+scalar Internet.Proxy6 "Hit Rate" 0
+scalar Internet.Proxy6 "Write Operations" 0
+scalar Internet.Proxy6 "Read OPerations" 0
+scalar Internet.Proxy7 Requests 170
+scalar Internet.Proxy7 "Hit Rate" 0
+scalar Internet.Proxy7 "Write Operations" 0
+scalar Internet.Proxy7 "Read OPerations" 0
+
