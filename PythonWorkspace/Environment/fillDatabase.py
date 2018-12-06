@@ -79,7 +79,7 @@ for d in range(30):
 
 
 ## daily distribution
-for d in range(10):
+for d in range(30):
 	prob = dailyCategoryProb[d]
 	for i in range(0,numberOfUniqueVideos): # 200
 		## flip to control category prob.
