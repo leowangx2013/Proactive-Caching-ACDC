@@ -42,7 +42,8 @@ dailyRequest = []
 subTypeProb = []
 dailyCategoryProb = []
 
-for d in range(30):
+totalDays = 30
+for d in range(totalDays):
 	if 15 < d <= 18:
 		pMusic = random.randint(25,30)/100.0
 		pComedy = random.randint(5,10)/100.0
@@ -79,7 +80,7 @@ for d in range(30):
 
 
 ## daily distribution
-for d in range(30):
+for d in range(totalDays):
 	prob = dailyCategoryProb[d]
 	for i in range(0,numberOfUniqueVideos): # 200
 		## flip to control category prob.
@@ -136,7 +137,7 @@ for index, row in df.iterrows():
 			'"""+str(row['videoId'])+"""', '"""+str(row['sessionDuration'])+"""', '"""+str(row['avgChunkDuration'])+"""',
 			'"""+str(row['chunks'])+"""', '"""+str(row['duration'])+"""', '"""+str(row['uploaded'])+"""', '"""+str(row['uploader'])+"""',
 			'"""+str(row['category'])+"""', '"""+str(row['bitrate'])+"""', '"""+str(row['index'])+"""', '"""+str(row['subtype'])+"""');"""
-	        print (executeStatement)
+	        # print (executeStatement)
                 cursor.execute(executeStatement);
 		db.commit();
 	except:
