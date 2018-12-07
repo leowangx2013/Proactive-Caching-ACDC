@@ -136,7 +136,7 @@ def hour_distribution_fun(category):
 				if h24Prob < 0:
 					h24Prob = 0
 				hourlyDistribution.append(h24Prob)
-	elif:
+	else:
 		hourlyDistribution = [1.0/24] * 24
 
 	return hourlyDistribution
