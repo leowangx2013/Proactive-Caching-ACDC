@@ -31,6 +31,7 @@ message VideoSegment
     string uploaded_datetime = "";
     string uploader = "";
     string category = "";
+    string subtype = "";
     int requested = 1;
     bool seenAbove = false;
     int size = 75;
