@@ -9,11 +9,9 @@ from random import shuffle
 db = mysql.connector.connect(user='root', password='socialsim', host='localhost',database='ACDCTestData')
 cursor = db.cursor();
 
-
-numberOfUniqueVideos = 200
+numberOfUniqueVideos = 500
 numberOfUniqueClients = 300
 simulationTime = 24*60*60 # one month
-# numberOfRequests = 672
 
 CategoryList = ['Music','MISC','News','Sports','Comedy']
 subTypeDict = {'Music':['pop','rock','country'], \
@@ -30,9 +28,19 @@ videoCategoryTupleList = []
 for i in range(0,numberOfUniqueClients): #
 	uniqueUserIdList.append(''.join(random.choice(string.digits) for _ in range(6)))
 
-for i in range(0,numberOfUniqueVideos): # 200
-	uniqueVideoIdList.append(''.join(random.choice(string.ascii_letters + string.digits) for _ in range(10)))
 
+## generate video ID
+for i in range(0,numberOfUniqueVideos): # 10000
+	uniqueVideoIdList.append(''.join(random.choice(string.digits) for _ in range(6)))
+
+cat2videoID = dict()
+for i in range(0,numberOfUniqueVideos): # 10000
+	## flip to control category prob.
+	num = np.random.choice(np.arange(0, 5), p = [0.3,0.3,0.1,0.2,0.1])
+	videoCategoryTupleList.append((uniqueVideoIdList[i],CategoryList[num]))
+	cat2video.setdefault(IDCategoryList[num],[]).append(uniqueVideoIdList[i])
+
+## dictionary to save features
 Table = {'row_names':[],'requestTime':[],'userId':[],'videoId':[],
 		'sessionDuration':[],'avgChunkDuration':[],'chunks':[],'duration':[],
 		'uploaded':[],'uploader':[],'category':[],'bitrate':[],'index':[], 'subtype':[]}
@@ -45,6 +53,7 @@ dailyCategoryProb = []
 totalDays = 30
 for d in range(totalDays):
 	if 15 < d <= 18:
+		## category prob. distribution
 		pMusic = random.randint(25,30)/100.0
 		pComedy = random.randint(5,10)/100.0
 		pNews = random.randint(5,10)/100.0
@@ -52,8 +61,8 @@ for d in range(totalDays):
 		pMISC = 1 - pMusic - pComedy - pNews - pSports
 		dailyCategoryProb.append([pMusic,pMISC,pNews,pSports,pComedy])
 
-		## daily request
-		dailyRequest.append(random.randint(70,80))
+		## daily # of request
+		dailyRequest.append(random.randint(350,400))
 
 		# subtype prob. distribution
 		pSub1 = random.randint(50,55)/100.0
@@ -62,6 +71,7 @@ for d in range(totalDays):
 		subTypeProb.append([pSub1,pSub2,pSub3])
 
 	else:
+		## category prob. distribution
 		pMusic = random.randint(25,33)/100.0
 		pComedy = random.randint(5,12)/100.0
 		pNews = random.randint(5,10)/100.0
@@ -70,7 +80,7 @@ for d in range(totalDays):
 		dailyCategoryProb.append([pMusic,pMISC,pNews,pSports,pComedy])
 
 		## daily request
-		dailyRequest.append(random.randint(50,60))
+		dailyRequest.append(random.randint(200,250))
 
 		## subtype prob. distribution
 		pSub1 = random.randint(30,35)/100.0
@@ -78,29 +88,82 @@ for d in range(totalDays):
 		pSub3 = 1 - pSub1 - pSub2
 		subTypeProb.append([pSub1,pSub2,pSub3])
 
+## hourly distribution for each category
+def hour_distribution_fun(category):
+	'''for each category '''
+	hourlyDistribution = []
+	if category == 'Sports':
+		for h in range(0,24):
+			if 19 <= h < 23:
+				hourlyDistribution.append(random.randint(10,15)/100.0)
+			elif 0 <= h < 19:
+				hourlyDistribution.append(random.randint(2,3)/100.0)
+			else:
+				h24Prob = 1.0 - sum(hourlyDistribution)
+				if h24Prob < 0:
+					h24Prob = 0
+				hourlyDistribution.append(h24Prob)
+	elif category == 'News':
+		for h in range(0,24):
+			if 19 <= h < 23 or 9 <= h < 12:
+				hourlyDistribution.append(random.randint(6,10)/100.0)
+			elif 0 <= h < 9 or 12 <= h < 19:
+				hourlyDistribution.append(random.randint(1,3)/100.0)
+			else:
+				h24Prob = 1.0 - sum(hourlyDistribution)
+				if h24Prob < 0:
+					h24Prob = 0
+				hourlyDistribution.append(h24Prob)
+	elif category == 'Comedy':
+		for h in range(0,24):
+			if 12 <= h < 20:
+				hourlyDistribution.append(random.randint(5,8)/100.0)
+			elif 0 <= h < 12 or 20 <= h < 23:
+				hourlyDistribution.append(random.randint(1,4)/100.0)
+			else:
+				h24Prob = 1.0 - sum(hourlyDistribution)
+				if h24Prob < 0:
+					h24Prob = 0
+				hourlyDistribution.append(h24Prob)
+	elif category == 'Music':
+		for h in range(0,24):
+			if 19 <= h < 23:
+				hourlyDistribution.append(random.randint(8,14)/100.0)
+			elif 0 <= h < 19:
+				hourlyDistribution.append(random.randint(2,3)/100.0)
+			else:
+				h24Prob = 1.0 - sum(hourlyDistribution)
+				if h24Prob < 0:
+					h24Prob = 0
+				hourlyDistribution.append(h24Prob)
+	elif:
+		hourlyDistribution = [1.0/24] * 24
+
+	return hourlyDistribution
 
 ## daily distribution
 for d in range(totalDays):
-	prob = dailyCategoryProb[d]
-	for i in range(0,numberOfUniqueVideos): # 200
-		## flip to control category prob.
-		num = np.random.choice(np.arange(0, 5), p = prob)
-		videoCategoryTupleList.append((uniqueVideoIdList[i],CategoryList[num]))
-	
-	## # of requests
+	## num of requests
 	numberOfRequests = dailyRequest[d]
 	subProb = subTypeProb[d]
+	catProb = dailyCategoryProb[d]
 
 	for i in range(1,numberOfRequests+1):
-		vidCatTuple = videoCategoryTupleList[random.randint(0,len(videoCategoryTupleList)-1)]
-		videoId = vidCatTuple[0]
-		category = vidCatTuple[1]
+		category = CategoryList[np.random.choice(np.arange(0, 5), p = catProb)]
+		videoId = random.choice(cat2videoID[category])
+
+		## subtype
 		subtypeList = subTypeDict[category]
 		subtype = subtypeList[np.random.choice(np.arange(0, 3), p = subProb)]
 
+		## sports(night), news(mornig and night), comedy(noon and night), music(night) daily distribution
+		hourlyDistribution = hour_distribution_fun(category)
+		hour = np.random.choice(np.arange(0,24), p = hourlyDistribution)
+		realTime = simulationTime/24.0*hour + random.randint(60*1,60*59)
+		
 		## create a table
+		Table['requestTime'].append(1480550400.0 + simulationTime*d + realTime)
 		Table['row_names'].append(1)
-		Table['requestTime'].append(1397426400.07611+ simulationTime*d + (simulationTime/numberOfRequests)*(i-1))
 		Table['userId'].append(uniqueUserIdList[random.randint(0,len(uniqueUserIdList)-1)])
 		Table['videoId'].append(videoId)
 		Table['sessionDuration'].append(random.randint(7,255))
