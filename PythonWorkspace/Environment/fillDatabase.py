@@ -38,7 +38,7 @@ for i in range(0,numberOfUniqueVideos): # 10000
 	## flip to control category prob.
 	num = np.random.choice(np.arange(0, 5), p = [0.3,0.3,0.1,0.2,0.1])
 	videoCategoryTupleList.append((uniqueVideoIdList[i],CategoryList[num]))
-	cat2video.setdefault(IDCategoryList[num],[]).append(uniqueVideoIdList[i])
+	cat2videoID.setdefault(IDCategoryList[num],[]).append(uniqueVideoIdList[i])
 
 ## dictionary to save features
 Table = {'row_names':[],'requestTime':[],'userId':[],'videoId':[],
@@ -95,9 +95,9 @@ def hour_distribution_fun(category):
 	if category == 'Sports':
 		for h in range(0,24):
 			if 19 <= h < 23:
-				hourlyDistribution.append(random.randint(10,15)/100.0)
+				hourlyDistribution.append(random.randint(8,12)/100.0)
 			elif 0 <= h < 19:
-				hourlyDistribution.append(random.randint(2,3)/100.0)
+				hourlyDistribution.append(random.randint(1,4)/100.0)
 			else:
 				h24Prob = 1.0 - sum(hourlyDistribution)
 				if h24Prob < 0:
@@ -106,7 +106,7 @@ def hour_distribution_fun(category):
 	elif category == 'News':
 		for h in range(0,24):
 			if 19 <= h < 23 or 9 <= h < 12:
-				hourlyDistribution.append(random.randint(6,10)/100.0)
+				hourlyDistribution.append(random.randint(5,10)/100.0)
 			elif 0 <= h < 9 or 12 <= h < 19:
 				hourlyDistribution.append(random.randint(1,3)/100.0)
 			else:
