@@ -190,6 +190,7 @@ VideoSegment::VideoSegment(const char *name, short kind) : ::omnetpp::cMessage(n
     this->uploaded_datetime = "";
     this->uploader = "";
     this->category = "";
+    this->subtype = "";
     this->requested = 1;
     this->seenAbove = false;
     this->size = 75;
@@ -223,6 +224,7 @@ void VideoSegment::copy(const VideoSegment& other)
     this->uploaded_datetime = other.uploaded_datetime;
     this->uploader = other.uploader;
     this->category = other.category;
+    this->subtype = other.subtype;
     this->requested = other.requested;
     this->seenAbove = other.seenAbove;
     this->size = other.size;
@@ -240,6 +242,7 @@ void VideoSegment::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->uploaded_datetime);
     doParsimPacking(b,this->uploader);
     doParsimPacking(b,this->category);
+    doParsimPacking(b,this->subtype);
     doParsimPacking(b,this->requested);
     doParsimPacking(b,this->seenAbove);
     doParsimPacking(b,this->size);
@@ -257,6 +260,7 @@ void VideoSegment::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->uploaded_datetime);
     doParsimUnpacking(b,this->uploader);
     doParsimUnpacking(b,this->category);
+    doParsimUnpacking(b,this->subtype);
     doParsimUnpacking(b,this->requested);
     doParsimUnpacking(b,this->seenAbove);
     doParsimUnpacking(b,this->size);
@@ -350,6 +354,16 @@ const char * VideoSegment::getCategory() const
 void VideoSegment::setCategory(const char * category)
 {
     this->category = category;
+}
+
+const char * VideoSegment::getSubtype() const
+{
+    return this->subtype.c_str();
+}
+
+void VideoSegment::setSubtype(const char * subtype)
+{
+    this->subtype = subtype;
 }
 
 int VideoSegment::getRequested() const
@@ -493,6 +507,7 @@ const char *VideoSegmentDescriptor::getFieldName(int field) const
         "uploaded_datetime",
         "uploader",
         "category",
+        "subtype",
         "requested",
         "seenAbove",
         "size",
@@ -513,9 +528,10 @@ int VideoSegmentDescriptor::findField(const char *fieldName) const
     if (fieldName[0]=='u' && strcmp(fieldName, "uploaded_datetime")==0) return base+6;
     if (fieldName[0]=='u' && strcmp(fieldName, "uploader")==0) return base+7;
     if (fieldName[0]=='c' && strcmp(fieldName, "category")==0) return base+8;
-    if (fieldName[0]=='r' && strcmp(fieldName, "requested")==0) return base+9;
-    if (fieldName[0]=='s' && strcmp(fieldName, "seenAbove")==0) return base+10;
-    if (fieldName[0]=='s' && strcmp(fieldName, "size")==0) return base+11;
+    if (fieldName[0]=='s' && strcmp(fieldName, "subtype")==0) return base+9;
+    if (fieldName[0]=='r' && strcmp(fieldName, "requested")==0) return base+10;
+    if (fieldName[0]=='s' && strcmp(fieldName, "seenAbove")==0) return base+11;
+    if (fieldName[0]=='s' && strcmp(fieldName, "size")==0) return base+12;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -617,9 +633,10 @@ std::string VideoSegmentDescriptor::getFieldValueAsString(void *object, int fiel
         case 6: return oppstring2string(pp->getUploaded_datetime());
         case 7: return oppstring2string(pp->getUploader());
         case 8: return oppstring2string(pp->getCategory());
-        case 9: return long2string(pp->getRequested());
-        case 10: return bool2string(pp->getSeenAbove());
-        case 11: return long2string(pp->getSize());
+        case 9: return oppstring2string(pp->getSubtype());
+        case 10: return long2string(pp->getRequested());
+        case 11: return bool2string(pp->getSeenAbove());
+        case 12: return long2string(pp->getSize());
         default: return "";
     }
 }
@@ -643,9 +660,10 @@ bool VideoSegmentDescriptor::setFieldValueAsString(void *object, int field, int 
         case 6: pp->setUploaded_datetime((value)); return true;
         case 7: pp->setUploader((value)); return true;
         case 8: pp->setCategory((value)); return true;
-        case 9: pp->setRequested(string2long(value)); return true;
-        case 10: pp->setSeenAbove(string2bool(value)); return true;
-        case 11: pp->setSize(string2long(value)); return true;
+        case 9: pp->setSubtype((value)); return true;
+        case 10: pp->setRequested(string2long(value)); return true;
+        case 11: pp->setSeenAbove(string2bool(value)); return true;
+        case 12: pp->setSize(string2long(value)); return true;
         default: return false;
     }
 }

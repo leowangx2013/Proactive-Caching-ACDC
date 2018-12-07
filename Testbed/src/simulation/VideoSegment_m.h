@@ -32,6 +32,7 @@
  *     string uploaded_datetime = "";
  *     string uploader = "";
  *     string category = "";
+ *     string subtype = "";
  *     int requested = 1;
  *     bool seenAbove = false;
  *     int size = 75;
@@ -51,6 +52,7 @@ class VideoSegment : public ::omnetpp::cMessage
     ::omnetpp::opp_string uploaded_datetime;
     ::omnetpp::opp_string uploader;
     ::omnetpp::opp_string category;
+    ::monetpp::opp_string subtype;
     int requested;
     bool seenAbove;
     int size;
@@ -90,6 +92,8 @@ class VideoSegment : public ::omnetpp::cMessage
     virtual void setUploader(const char * uploader);
     virtual const char * getCategory() const;
     virtual void setCategory(const char * category);
+    virtual const char * getSubtype() const;
+    virtual void setSubtype(const char * subtype);
     virtual int getRequested() const;
     virtual void setRequested(int requested);
     virtual bool getSeenAbove() const;
