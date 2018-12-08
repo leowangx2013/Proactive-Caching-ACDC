@@ -94,48 +94,32 @@ def hour_distribution_fun(category):
 	hourlyDistribution = []
 	if category == 'Sports':
 		for h in range(0,24):
-			if 19 <= h < 23:
+			if 19 <= h <= 23:
 				hourlyDistribution.append(random.randint(8,12)/100.0)
-			elif 0 <= h < 19:
-				hourlyDistribution.append(random.randint(1,4)/100.0)
 			else:
-				h24Prob = 1.0 - sum(hourlyDistribution)
-				if h24Prob < 0:
-					h24Prob = 0
-				hourlyDistribution.append(h24Prob)
+				restProb = 1.0 - sum(hourlyDistribution)
+				hourlyDistribution.append(restProb/19)
 	elif category == 'News':
 		for h in range(0,24):
-			if 19 <= h < 23 or 9 <= h < 12:
-				hourlyDistribution.append(random.randint(5,10)/100.0)
-			elif 0 <= h < 9 or 12 <= h < 19:
-				hourlyDistribution.append(random.randint(1,3)/100.0)
+			if 19 <= h <= 23 or 9 <= h < 12:
+				hourlyDistribution.append(random.randint(6,10)/100.0)
 			else:
-				h24Prob = 1.0 - sum(hourlyDistribution)
-				if h24Prob < 0:
-					h24Prob = 0
-				hourlyDistribution.append(h24Prob)
+				restProb = 1.0 - sum(hourlyDistribution)
+				hourlyDistribution.append(restProb/16)
 	elif category == 'Comedy':
 		for h in range(0,24):
-			if 12 <= h < 20:
+			if 12 <= h <= 15 or 19 <= h <= 22
 				hourlyDistribution.append(random.randint(5,8)/100.0)
-			elif 0 <= h < 12 or 20 <= h < 23:
-				hourlyDistribution.append(random.randint(1,4)/100.0)
 			else:
-				h24Prob = 1.0 - sum(hourlyDistribution)
-				if h24Prob < 0:
-					h24Prob = 0
-				hourlyDistribution.append(h24Prob)
+				restProb = 1.0 - sum(hourlyDistribution)
+				hourlyDistribution.append(restProb/16)
 	elif category == 'Music':
 		for h in range(0,24):
-			if 19 <= h < 23:
+			if 19 <= h <= 23:
 				hourlyDistribution.append(random.randint(8,14)/100.0)
-			elif 0 <= h < 19:
-				hourlyDistribution.append(random.randint(2,3)/100.0)
 			else:
-				h24Prob = 1.0 - sum(hourlyDistribution)
-				if h24Prob < 0:
-					h24Prob = 0
-				hourlyDistribution.append(h24Prob)
+				restProb = 1.0 - sum(hourlyDistribution)
+				hourlyDistribution.append(restProb/19)
 	else:
 		hourlyDistribution = [1.0/24] * 24
 
