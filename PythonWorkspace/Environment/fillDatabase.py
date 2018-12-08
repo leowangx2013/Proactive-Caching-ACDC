@@ -93,33 +93,33 @@ def hour_distribution_fun(category):
 	'''for each category '''
 	hourlyDistribution = []
 	if category == 'Sports':
-		for h in range(0,24):
+		for h in range(24):
 			if 19 <= h <= 23:
 				hourlyDistribution.append(random.randint(8,12)/100.0)
 			else:
 				restProb = 1.0 - sum(hourlyDistribution)
 				hourlyDistribution.append(restProb/19)
 	elif category == 'News':
-		for h in range(0,24):
+		for h in range(24):
 			if 19 <= h <= 23 or 9 <= h < 12:
 				hourlyDistribution.append(random.randint(6,10)/100.0)
 			else:
 				restProb = 1.0 - sum(hourlyDistribution)
 				hourlyDistribution.append(restProb/16)
 	elif category == 'Comedy':
-		for h in range(0,24):
+		for h in range(24):
 			if 12 <= h <= 15 or 19 <= h <= 22:
 				hourlyDistribution.append(random.randint(5,8)/100.0)
 			else:
 				restProb = 1.0 - sum(hourlyDistribution)
 				hourlyDistribution.append(restProb/16)
 	elif category == 'Music':
-		for h in range(0,24):
+		for h in range(24):
 			if 19 <= h <= 23:
 				hourlyDistribution.append(random.randint(8,14)/100.0)
 			else:
 				restProb = 1.0 - sum(hourlyDistribution)
-				hourlyDistribution.append(restProb/19)
+				hourlyDistribution.append(restProb/19.0)
 	else:
 		hourlyDistribution = [1.0/24] * 24
 
