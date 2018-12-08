@@ -108,7 +108,7 @@ def hour_distribution_fun(category):
 				hourlyDistribution.append(restProb/16)
 	elif category == 'Comedy':
 		for h in range(0,24):
-			if 12 <= h <= 15 or 19 <= h <= 22
+			if 12 <= h <= 15 or 19 <= h <= 22:
 				hourlyDistribution.append(random.randint(5,8)/100.0)
 			else:
 				restProb = 1.0 - sum(hourlyDistribution)
