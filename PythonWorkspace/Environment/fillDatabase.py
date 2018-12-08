@@ -139,7 +139,7 @@ for d in range(totalDays):
 		## subtype
 		subtypeList = subTypeDict[category]
 		subtype = subtypeList[np.random.choice(np.arange(0, 3), p = subProb)]
-
+		print(category)
 		## sports(night), news(mornig and night), comedy(noon and night), music(night) daily distribution
 		hourlyDistribution = hour_distribution_fun(category)
 		hour = np.random.choice(np.arange(0,24), p = hourlyDistribution)
