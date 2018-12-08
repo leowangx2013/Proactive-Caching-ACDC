@@ -38,7 +38,7 @@ for i in range(0,numberOfUniqueVideos): # 10000
 	## flip to control category prob.
 	num = np.random.choice(np.arange(0, 5), p = [0.3,0.3,0.1,0.2,0.1])
 	videoCategoryTupleList.append((uniqueVideoIdList[i],CategoryList[num]))
-	cat2videoID.setdefault(IDCategoryList[num],[]).append(uniqueVideoIdList[i])
+	cat2videoID.setdefault(CategoryList[num],[]).append(uniqueVideoIdList[i])
 
 ## dictionary to save features
 Table = {'row_names':[],'requestTime':[],'userId':[],'videoId':[],
