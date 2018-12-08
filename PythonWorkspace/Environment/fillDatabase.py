@@ -119,7 +119,7 @@ def hour_distribution_fun(category):
 	else:
 		hourlyDistribution = [1.0] * 24
 	Distribution = 1.0*np.array(hourlyDistribution)/np.sum(hourlyDistribution)
-
+	print(sum(Distribution))
 	return Distribution
 
 ## daily distribution
