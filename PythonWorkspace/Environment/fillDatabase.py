@@ -95,35 +95,32 @@ def hour_distribution_fun(category):
 	if category == 'Sports':
 		for h in range(24):
 			if 19 <= h <= 23:
-				hourlyDistribution.append(random.randint(8,12)/100.0)
+				hourlyDistribution.append(random.randint(8,12))
 			else:
-				restProb = 1.0 - sum(hourlyDistribution)
-				hourlyDistribution.append(restProb/19)
+				hourlyDistribution.append(random.randint(4,6))
 	elif category == 'News':
 		for h in range(24):
 			if 19 <= h <= 23 or 9 <= h < 12:
-				hourlyDistribution.append(random.randint(6,10)/100.0)
+				hourlyDistribution.append(random.randint(6,10))
 			else:
-				restProb = 1.0 - sum(hourlyDistribution)
-				hourlyDistribution.append(restProb/16)
+				hourlyDistribution.append(random.randint(2,4))
 	elif category == 'Comedy':
 		for h in range(24):
 			if 12 <= h <= 15 or 19 <= h <= 22:
-				hourlyDistribution.append(random.randint(5,8)/100.0)
+				hourlyDistribution.append(random.randint(5,8))
 			else:
-				restProb = 1.0 - sum(hourlyDistribution)
-				hourlyDistribution.append(restProb/16)
+				hourlyDistribution.append(random.randint(2,4))
 	elif category == 'Music':
 		for h in range(24):
 			if 19 <= h <= 23:
-				hourlyDistribution.append(random.randint(8,14)/100.0)
+				hourlyDistribution.append(random.randint(8,12))
 			else:
-				restProb = 1.0 - sum(hourlyDistribution)
-				hourlyDistribution.append(restProb/19.0)
+				hourlyDistribution.append(random.randint(2,5))
 	else:
-		hourlyDistribution = [1.0/24] * 24
+		hourlyDistribution = [1.0] * 24
+	Distribution = 1.0*np.array(hourlyDistribution)/np.sum(hourlyDistribution)
 
-	return hourlyDistribution
+	return Distribution
 
 ## daily distribution
 for d in range(totalDays):
